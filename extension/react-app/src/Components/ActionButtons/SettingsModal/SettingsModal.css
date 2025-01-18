@@ -1,0 +1,232 @@
+.settings-modal .ant-modal-content {
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.modal-container {
+    padding: 24px;
+    width: auto;
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0 0 24px 0;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-title span {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.shield-icon {
+    color: #4F46E5;
+    font-size: 24px;
+}
+
+.close-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Productive Mode Section */
+.feature-section {
+    background-color: #F8F9FF;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.feature-content h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    color: #111;
+}
+
+.feature-content p {
+    color: #666;
+    margin: 4px 0 0 0;
+    font-size: 16px;
+}
+
+/* Stats Section */
+.stats-section {
+    margin: 0 -8px 24px -8px;
+}
+
+.stat-card {
+    background: #F8F9FF;
+    padding: 16px;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.stat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.stat-icon {
+    background: #F0F0F0;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Toggles Section */
+.toggles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toggle-label span {
+    font-size: 16px;
+    color: #111;
+}
+
+.toggle-icon {
+    background: #F0F0F0;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Switch Styles */
+.settings-modal .ant-switch {
+    min-width: 44px;
+    height: 24px;
+    background: #E5E7EB;
+}
+
+.settings-modal .ant-switch-checked {
+    background: #4F46E5 !important;
+}
+
+.settings-modal .ant-switch-handle {
+    width: 20px;
+    height: 20px;
+    top: 2px;
+}
+
+/* Adjust switch handle position */
+.settings-modal .ant-switch-handle::before {
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+
+/* Confirmation Modal Styles */
+.confirmation-modal .confirm-content {
+    text-align: center;
+    padding: 24px;
+}
+
+.confirmation-modal .warning-icon {
+    font-size: 48px;
+    color: #faad14;
+    margin-bottom: 16px;
+}
+
+.confirmation-modal h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.confirmation-modal p {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.confirmation-modal .confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.confirmation-modal button {
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.confirmation-modal .cancel-btn {
+    background: #f0f0f0;
+    border: none;
+}
+
+.confirmation-modal .deactivate-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+}
+
+/* Success Modal Styles */
+.success-modal .success-content {
+    text-align: center;
+    padding: 32px;
+}
+
+.success-modal .success-icon {
+    font-size: 48px;
+    color: #52c41a;
+    margin-bottom: 16px;
+}
+
+.success-modal h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.success-modal p {
+    color: #666;
+}

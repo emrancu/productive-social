@@ -1,0 +1,36 @@
+
+.modal-container {
+    padding: 0 !important;
+}
+.modal-header {
+    padding-left:0 !important;
+    padding-right:0 !important;
+}
+
+
+.float-button {
+    position: fixed !important;
+    right: 20px !important;
+    top: 92px !important;
+    transform: translateY(-50%) !important;
+    z-index: 99999 !important;
+}
+
+.mode-button {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    height: auto !important;
+    padding: 14px !important;
+    font-size: 22px !important;
+}
+
+@media (max-width: 800px) {
+    .float-button{
+        top: 66px !important;
+        right: 12px !important;
+    }
+
+    #ps_main_title{
+      display: none !important;
+    }
+}

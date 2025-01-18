@@ -1,0 +1,127 @@
+/* WelcomeModal.css */
+.welcome-modal .ant-modal-content {
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-container {
+    width: 100%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.info-circle {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #d9d9d9;
+    border-radius: 50%;
+}
+
+.info-circle .anticon {
+    font-size: 14px;
+    color: #666;
+}
+
+.close-button {
+    border: none;
+    font-size: 18px;
+}
+
+.modal-content {
+    padding: 24px 32px;
+}
+
+.description {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 32px;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.feature-item .anticon {
+    font-size: 18px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.feature-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.feature-description {
+    font-size: 18px;
+    color: #666;
+}
+
+.bottom-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: #f5f5f5;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.bottom-message .anticon {
+    font-size: 18px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.bottom-message span {
+    font-size: 18px;
+    color: #666;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+
+
+
+.maybe-later-btn:hover {
+    background: #f0f0f0;
+}

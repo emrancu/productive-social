@@ -1,0 +1,42 @@
+/* components/ModeSwitch/ModeSwitch.css */
+.feature-section {
+    background-color: #F8F9FF;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.feature-content h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    color: #111;
+}
+
+.feature-content p {
+    color: #666;
+    margin: 4px 0 0 0;
+    font-size: 16px;
+}
+
+/* Switch Styles */
+.feature-section .ant-switch {
+    min-width: 44px;
+    height: 24px;
+}
+
+.feature-section .ant-switch-checked {
+    background: #4F46E5 !important;
+}
+
+.feature-section .ant-switch-checked .ant-switch-handle {
+    top: 2px;
+}
+
+/* Hover effect */
+.feature-section:hover {
+    background-color: #F3F4FF;
+}
