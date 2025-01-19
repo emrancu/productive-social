@@ -1,8 +1,5 @@
 import { init, i, id } from "@instantdb/core";
 
-// ID for app: ProductiveSocial
-const APP_ID = import.meta.env.INSTANT_DB_KEY;
-
 // Optional: Declare your schema!
 const schema = i.schema({
     entities: {
@@ -28,7 +25,7 @@ const schema = i.schema({
 });
 
 
-const db = init({ appId: APP_ID, schema, devtool: false });
+const db = init({ appId: import.meta.env.VITE_INSTANT_DB_KEY, schema, devtool: false });
 
 export const  getAccount = async (userInfo:any)=> {
 
@@ -41,6 +38,7 @@ export const  getAccount = async (userInfo:any)=> {
         }});
 
     if(data) {
+
 
         if (data.accounts.length && data?.accounts[0] && data?.accounts[0]?.facebook_id) {
             return data.accounts[0]

@@ -20,14 +20,12 @@ mainStore.subscribe((state, prevState) => {
 })
 
 
-
-const hideSideMenus = ()=>{
-
+const hideUnwantedMenus = ()=>{
     // Hide complementary div
-    jquery("div[id^='mount'] div[role='complementary']>div").hide();
+    jquery("div[id^='mount'] div[role='complementary']>div")?.css({display: 'none'});
 
     // Select Stories section's parent divs
-    jquery("div[id^='mount'] div[aria-label='Stories']").parent('div').parent('div').remove();
+    jquery("div[id^='mount'] div[aria-label='Stories']").parent('div').parent('div')?.css({display: 'none'});
 
     // Loop through Shortcuts and remove specific items
     jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul li").each(function () {
@@ -39,21 +37,35 @@ const hideSideMenus = ()=>{
             'a[href^="https://www.facebook.com/watch"], ' +
             'a[href^="https://www.facebook.com/marketplace"]'
         ).length > 0) {
-            jquery(this).remove();
+            jquery(this).css({display: 'none'});
         }
     });
 
     // Remove extra elements in Shortcuts
-    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul + div").remove();
-    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child").prev('div').remove();
-    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child").remove();
-    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child + div").remove();
+    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul + div")?.css({display: 'none'});
 
-    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Video']").remove();
-    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Marketplace']").remove();
-    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Groups']").remove();
-    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Gaming']").remove();
-    // jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Home']").remove();
+    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child").prev('div')?.css({display: 'none'});
+
+    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul").closest('div').next('div')?.css({display: 'none'});
+
+    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child")?.css({display: 'none'});
+    jquery("div[id^='mount'] div[aria-label='Shortcuts'] ul:last-child + div")?.css({display: 'none'});
+
+    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Video']")?.css({display: 'none'});
+    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Marketplace']")?.css({display: 'none'});
+    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Groups']")?.css({display: 'none'});
+    jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Gaming']")?.css({display: 'none'});
+
+}
+
+const hideSideMenus = ()=>{
+
+    hideUnwantedMenus();
+
+    setInterval(()=>{
+        hideUnwantedMenus()
+    }, 4000)
+
 
     setInterval(()=>{
 
@@ -164,10 +176,11 @@ const hideSideMenus = ()=>{
 
 }
 
-
 const hideSideMenusForMobile = ()=> {
+
     let MobileApp = document.querySelector('div[id^="screen-root"]');
     if (MobileApp) {
+
 
         // hide friend nav
         document.querySelector("div[id^='screen-root']>div>div>div[role='tablist']>div:nth-child(2)")?.classList.add('productive-social-hide-menu')
@@ -200,6 +213,11 @@ const hideSideMenusForMobile = ()=> {
                 story.innerHTML = ''
             }
 
+            const openApp =  document.querySelector('div.fl.ac>div.native-text>span.f20')
+            if(openApp && openApp.innerText && openApp.innerText.includes('Open app')){
+                openApp.closest('div.fixed-container').remove();
+            }
+
             const items = document.querySelectorAll("div[id^='screen-root']>div>div>div.productive-social-hide-visibility.hidden-story ~ div:not(.productive-social-hide-visibility)");
 
             const filteredItems = Array.from(items).filter(item => {
@@ -223,6 +241,12 @@ const hideSideMenusForMobile = ()=> {
             });
 
             filteredItems.forEach((item, index) => {
+
+                const openAppTxt =  item.querySelector('div.fl.ac>div.native-text>span.f20')?.innerText
+
+                if(openAppTxt && openAppTxt.includes('Open app')){
+                    item.remove();
+                }
 
                 let found = false
 
@@ -261,13 +285,14 @@ const hideSideMenusForMobile = ()=> {
                     })
                 }
 
+                item.classList.add('ps_processed')
 
                 if (found) {
 
-                    const lastIndex = items.length - 2
-                    if (index < lastIndex) {
-                        item.innerHTML = ''
-                    }
+                  //  const lastIndex = items.length - 2
+                  //  if (index < lastIndex) {
+                        item.classList.add('productive-social-hide-visibility');
+                  //  }
                 }
 
             })
@@ -277,20 +302,20 @@ const hideSideMenusForMobile = ()=> {
 
     setInterval(() => {
 
-        document.querySelectorAll("div[id^='screen-root']>div>div>div:empty").forEach(item => {
+        document.querySelectorAll("div[id^='screen-root']>div>div>div.productive-social-hide-visibility").forEach(item => {
+
             let height = parseInt(item.getAttribute('data-actual-height'))
 
             item.style.marginTop = '-' + height + 'px';
             item.style.zIndex = '-1';
+            item.style.visible = 'hidden';
             item.classList.add('productive-social-hide-visibility');
-            item.setAttribute('data-processed', 'true');
+
         })
 
-
-    }, 10)
+    }, 5)
 
 }
-
 
 const processMessageCallback = (response, imageTag) => {
 

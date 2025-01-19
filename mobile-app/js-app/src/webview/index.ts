@@ -7,7 +7,6 @@ let webview: any = null;
 // let isServiceRunning: boolean = false;
 let isWebViewRunning: boolean = false;
 
-
 export const startFacebook = ()=>{
 
     if (!isWebViewRunning) {
@@ -27,7 +26,7 @@ export const startFacebook = ()=>{
 
                 const data = event.data
 
-                if(data.type === 'ps_get_account' && data?.callback_uid){
+                if(data.type === 'ps_get_account'){
                     const account = await getAccount(data.userInfo)
 
                     webview.executeScript({
@@ -35,7 +34,6 @@ export const startFacebook = ()=>{
                       const callbackData = ${JSON.stringify(account)};
                       window.PS_MESSAGE_CALLBACK["${data.callback_uid}"](callbackData);
                        `,
-
                     });
                 }
 
@@ -85,7 +83,7 @@ function injectScript(src, id) {
         document.head.appendChild(script);
     }
 }
-     
+
 function injectInlineScript( id) {
    if(!document.getElementById('ps_script_' + id)) { 
          const script = document.createElement('script');
@@ -126,10 +124,10 @@ function injectInlineScript( id) {
 injectInlineScript("34862482712267423632"); 
  
 // check on extension - public/js/content.js
-injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/content.js?v=1.0.0.0', '100012001');
+injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/content.js?v=1.0.0.1', '100012001');
 
 // This is the main app file (after build)- check on extension - public/app/index.js
-injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/index.js?v=1.0.0.0', '100012002');
+injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/index.js?v=1.0.0.2', '100012002');
 
   `});
 

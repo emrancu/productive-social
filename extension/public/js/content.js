@@ -48,8 +48,6 @@ setTimeout(()=>{
 </svg>
 `;
         logo.style.cssText = `
-        width: 64px;
-        height: 64px;
         margin-bottom: 16px;
     `;
 

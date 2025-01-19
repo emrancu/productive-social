@@ -4,11 +4,8 @@ import {mainStore} from "@/Store/main.js";
 
 const setAccount = mainStore.getState().setAccount;
 
-// ID for app: ProductiveSocial
-const APP_ID = import.meta.env.INSTANT_DB_KEY;
-
 export const db = init({
-    appId: APP_ID,
+    appId: import.meta.env.VITE_INSTANT_DB_KEY,
 });
 
 export const addAccount = async (account)=>{

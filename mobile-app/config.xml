@@ -12,19 +12,9 @@
     <preference name="KeepRunning" value="true"/>
     <preference name="InAppBrowserKeepSessionAlive" value="true"/>
 
-<!--    <preference name="SplashScreen" value="screen" />-->
-<!--    <preference name="SplashScreenDelay" value="4000" />-->
-<!--    <preference name="FadeSplashScreen" value="true" />-->
-<!--    <preference name="FadeSplashScreenDuration" value="500" />-->
-<!--    <preference name="ShowSplashScreenSpinner" value="false" />-->
-<!--    <preference name="AutoHideSplashScreen" value="true" />-->
-
-<!--    <preference name="SplashMaintainAspectRatio" value="true" />-->
-
     <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/icon/android/icon.png" />
 
     <platform name="android">
-        <!-- Icons -->
         <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" />
         <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" />
         <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
@@ -37,7 +27,6 @@
         <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi" />
         <splash src="res/screen/android/splash-port-xxhdpi.png" density="port-xxhdpi" />
         <splash src="res/screen/android/splash-port-xxxhdpi.png" density="port-xxxhdpi" />
-
     </platform>
 
 
