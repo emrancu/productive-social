@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ps.ogroosoft" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Productive Social</name>
+    <description>Your Distraction-Free Facebook</description>
+    <author email="emrancu1@gmail.com" href="https://ogroosoft.com">
+        OgrooSoft Team
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="wss://*/*" />
+    <preference name="KeepRunning" value="true"/>
+    <preference name="InAppBrowserKeepSessionAlive" value="true"/>
+
+
+    <platform name="android">
+        <!-- Icons -->
+        <icon src="res/android/icon-48-mdpi.png" density="mdpi" />
+        <icon src="res/android/icon-72-hdpi.png" density="hdpi" />
+        <icon src="res/android/icon-96-xhdpi.png" density="xhdpi" />
+        <icon src="res/android/icon-144-xxhdpi.png" density="xxhdpi" />
+        <icon src="res/android/icon-192-xxxhdpi.png" density="xxxhdpi" />
+
+        <splash src="res/android/splash-port-ldpi.png" density="port-hdpi"/>
+        <splash src="res/android/splash-port-hdpi.png" density="port-hdpi"/>
+        <splash src="res/android/splash-port-mdpi.png" density="port-mdpi"/>
+    </platform>
+
+</widget>

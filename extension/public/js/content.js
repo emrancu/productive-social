@@ -1,4 +1,3 @@
-
 // Create a new div
 const containerDIv = document.createElement('div');
 containerDIv.id = "fb-feed-container"
@@ -12,7 +11,7 @@ setTimeout(()=>{
         targetDiv = document.querySelector('div[id^="screen-root"]');
     }
 
-// Move the target div into the new div
+
     if (targetDiv) {
         containerDIv.appendChild(targetDiv);
 
@@ -94,6 +93,7 @@ setTimeout(()=>{
         containerDIv.prepend(loaderOverlay);
 
     } else {
+        document.body.style.setProperty('visibility', 'visible', 'important');
         console.log('No div with id starting with "mount" found.');
     }
 

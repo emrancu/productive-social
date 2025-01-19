@@ -57,20 +57,20 @@ const hideSideMenus = ()=>{
 
     setInterval(()=>{
 
-        jquery("div[id^='mount'] div[role='main'] div.x1lliihq:not(.processed)").each(function (){
+        jquery("div[id^='mount'] div[role='main'] div.x1lliihq").each(function (){
 
             const item = jquery(this)
 
             let needRemove = false
 
-           const count =  parseInt(jquery(this).attr('data-processed-count') ?? 0)
-            if(count < 6){
-                jquery(this).attr('data-processed-count', count + 1 )
-            }
-
-            if(count >= 6){
-                jquery(this).addClass('processed')
-            }
+           // const count =  parseInt(jquery(this).attr('data-processed-count') ?? 0)
+           //  if(count < 6){
+           //      jquery(this).attr('data-processed-count', count + 1 )
+           //  }
+           //
+           //  if(count >= 6){
+           //      jquery(this).addClass('processed')
+           //  }
 
             jquery(this).find("span a span > span > span").each(function () {
                 let sponsoredText = '';
@@ -145,7 +145,7 @@ const hideSideMenus = ()=>{
             if(joinGroup){
                 joinGroup.each(function (){
 
-                    if(jquery(this).text().includes("join") || jquery(this).text().includes("Follow")){
+                    if(jquery(this).text().includes("Join") || jquery(this).text().includes("Follow")){
                         console.log("Follow.. or join")
                         needRemove = true
                     }

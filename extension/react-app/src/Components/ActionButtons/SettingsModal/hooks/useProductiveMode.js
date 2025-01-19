@@ -13,9 +13,8 @@ export const useProductiveMode = () => {
 
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
-    const settings = mainStore(state => state.settings);
-    const runningMode = mainStore(state => state.runningMode);
-    const setSetRunningMode = mainStore(state => state.setSetRunningMode);
+    const account = mainStore(state => state.account);
+    const runningMode = mainStore(state => state.runningMode); 
     const setBlurImage = mainStore(state => state.setBlurImage);
 
 
@@ -27,8 +26,24 @@ export const useProductiveMode = () => {
 
         setShowSuccessModal(true);
 
-        // Update in database
-        await updateMode(newMode, settings.id);
+        if(window?.PS_MOBILE_APP_ACTIVE){
+
+            /**
+             *  this is a custom function that bind with window from cordova index.j where create a webview for m.facebook.com
+             *  callback function will process from cordova app's index.js file
+             */
+            window.sendToCordova({
+                type: "ps_update_account_mode",
+                userInfo: account,
+                newMode: newMode
+            })
+
+        }else{
+
+            // Update in database
+            await updateMode(newMode, account.id);
+
+        }
 
         // Show success message
         message.success(`${newMode.charAt(0).toUpperCase() + newMode.slice(1)} mode activated`);
@@ -36,13 +51,13 @@ export const useProductiveMode = () => {
         // Auto hide success modal
         setTimeout(() => {
             setShowSuccessModal(false);
-        }, 2000);
 
-        if(newMode === MODES.NONE){
             setTimeout(()=>{
-                  window.location.reload()
+                window.location.reload()
             }, 300)
-        }
+
+
+        }, 2000);
 
     };
 
@@ -50,18 +65,38 @@ export const useProductiveMode = () => {
 
         setBlurImage(status)
 
-        await updateBlur(status, settings.id);
+        if(window?.PS_MOBILE_APP_ACTIVE){
+
+            /**
+             *  this is a custom function that bind with window from cordova index.j where create a webview for m.facebook.com
+             *  callback function will process from cordova app's index.js file
+             */
+            window.sendToCordova({
+                type: "ps_update_decent_image",
+                userInfo: account,
+                status: status
+            })
+
+        } else {
+
+            await updateBlur(status, account.id);
+
+        }
+
+        setTimeout(()=>{
+            window.location.reload()
+        }, 1000)
 
     };
 
     const deactivateMode = () => {
 
-        updateMode(MODES.NONE, settings.id);
+        updateMode(MODES.NONE, account.id);
         setShowConfirmModal(false);
         message.info('Productive Mode deactivated');
 
 
-        if(runningMode && settings?.facebook_mode === 'basic'){
+        if(runningMode && account?.facebook_mode === 'basic'){
             setSetRunningMode(null)
 
           setTimeout(()=>{
@@ -70,7 +105,7 @@ export const useProductiveMode = () => {
 
         }
 
-        if(runningMode && settings?.facebook_mode === 'special'){
+        if(runningMode && account?.facebook_mode === 'special'){
             setSetRunningMode(null)
 
             setTimeout(()=>{

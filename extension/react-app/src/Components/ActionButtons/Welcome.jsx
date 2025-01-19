@@ -10,11 +10,27 @@ const WelcomeModal = ({ isOpen, onClose }) => {
     const activeNow = async ()=>{
 
         if(userInfo?.ACCOUNT_ID){
-            await addAccount(userInfo)
+
+            if(window?.PS_MOBILE_APP_ACTIVE) {
+
+                /**
+                 *  this is a custom function that bind with window from cordova index.j where create a webview for m.facebook.com
+                 *  callback function will process from cordova app's index.js file
+                 */
+                window.sendToCordova({
+                    type: "ps_register_account",
+                    userInfo: userInfo,
+                })
+
+            } else {
+
+                await addAccount(userInfo)
+
+            }
 
             setTimeout(()=>{
                 window.location.reload();
-            }, 1000)
+            }, 1500)
         }
 
         onClose();
