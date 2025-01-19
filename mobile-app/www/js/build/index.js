@@ -120,4 +120,4 @@ injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-soc
 // This is the main app file (after build)- check on extension - public/app/index.js
 injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/index.js?v=1.0.0.0', '100012002');
 
-  `})}function rs(){ts()}document.addEventListener("deviceready",rs,!1)})();
+  `})}function rs(){setTimeout(function(){let t=document.querySelector("div#customSplash");t.style.transition="opacity 0.5s ease",t.style.opacity="0",setTimeout(function(){t.parentNode.removeChild(t)},500)},3e3),ts()}document.addEventListener("deviceready",rs,!1)})();
