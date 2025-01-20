@@ -220,27 +220,8 @@ const hideSideMenusForMobile = ()=> {
 
             const items = document.querySelectorAll("div[id^='screen-root']>div>div>div.productive-social-hide-visibility.hidden-story ~ div:not(.productive-social-hide-visibility)");
 
-            const filteredItems = Array.from(items).filter(item => {
 
-                let shouldRemain = false;
-                const condition1 = item.querySelector('div:nth-child(1)>div:not(:empty)')
-                if (!condition1) {
-                    shouldRemain = true
-                }
-
-                const condition2 = item.querySelector('div:nth-child(2)>div:not(:empty)')
-                if (condition2) {
-                    shouldRemain = true
-                }
-
-                if (item.querySelector("div[data-on-first-inserted-action-id]")) {
-                    shouldRemain = false
-                }
-
-                return shouldRemain
-            });
-
-            filteredItems.forEach((item, index) => {
+            items.forEach((item, index) => {
 
                 const openAppTxt =  item.querySelector('div.fl.ac>div.native-text>span.f20')?.innerText
 
@@ -288,15 +269,15 @@ const hideSideMenusForMobile = ()=> {
                 item.classList.add('ps_processed')
 
                 if (found) {
-                    item.style.opacity = '.2'
-                  item.classList.add('productive-social-hide-visibility');
-
-                    // item.querySelectorAll('div').forEach(div => {
-                    //     div.classList.add('productive-social-hide-visibility');
-                    //     div.innerHTML = ''
-                    // });
-
+                    item.classList.add('productive-social-hide-visibility');
+                    item.innerHTML = ''
                     increment()
+
+                    let height = parseInt(item.getAttribute('data-actual-height'))
+
+                    item.style.marginTop = '-' + height + 'px';
+                    item.style.zIndex = '-1';
+                    item.style.visibility = 'hidden';
                 }
 
             })
@@ -306,9 +287,10 @@ const hideSideMenusForMobile = ()=> {
 
     setInterval(() => {
 
-        document.querySelectorAll("div[id^='screen-root']>div>div>div.productive-social-hide-visibility").forEach(item => {
+        const processItem = document.querySelectorAll("div[id^='screen-root']>div>div>div:empty")
 
-            item =  item.closest('div')
+        processItem.forEach(item => {
+
             let height = parseInt(item.getAttribute('data-actual-height'))
 
             item.style.marginTop = '-' + height + 'px';
