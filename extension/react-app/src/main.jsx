@@ -7,9 +7,11 @@ setTimeout(()=>{
 
     const containerDIv = document.getElementById('fb-feed-container');
 
-    const appRoot = document.createElement('div');
-    appRoot.id = 'fb-feed-extension-root';
-    containerDIv.prepend(appRoot);
+    if(containerDIv){
+        const appRoot = document.createElement('div');
+        appRoot.id = 'fb-feed-extension-root';
+        containerDIv.prepend(appRoot);
+    }
 
 }, 200)
 
@@ -57,14 +59,13 @@ setTimeout(()=>{
         }
     }
 
-    if(userInfo){
+    if(userInfo && document.getElementById('fb-feed-extension-root')){
 
         createRoot(document.getElementById('fb-feed-extension-root')).render(
             <StrictMode>
                 <App userInfo={userInfo}/>
             </StrictMode>,
         )
-
     }
 
 }, 1000)

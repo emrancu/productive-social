@@ -85,11 +85,10 @@ body {
 
 }
 .productive-social-hide-visibility{
-    /*height: 0 !important;*/
     opacity: 0 !important;
     z-index: -1 !important;
     visibility: hidden !important;
-
+    transform: scale(0);
 }
 
 .productive-social-hide-visibility-clean{

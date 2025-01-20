@@ -288,9 +288,15 @@ const hideSideMenusForMobile = ()=> {
                 item.classList.add('ps_processed')
 
                 if (found) {
+                    item.style.opacity = '.2'
+                  item.classList.add('productive-social-hide-visibility');
 
-                 item.classList.add('productive-social-hide-visibility');
-                  increment()
+                    // item.querySelectorAll('div').forEach(div => {
+                    //     div.classList.add('productive-social-hide-visibility');
+                    //     div.innerHTML = ''
+                    // });
+
+                    increment()
                 }
 
             })
@@ -302,16 +308,16 @@ const hideSideMenusForMobile = ()=> {
 
         document.querySelectorAll("div[id^='screen-root']>div>div>div.productive-social-hide-visibility").forEach(item => {
 
+            item =  item.closest('div')
             let height = parseInt(item.getAttribute('data-actual-height'))
 
             item.style.marginTop = '-' + height + 'px';
             item.style.zIndex = '-1';
-            item.style.visible = 'hidden';
-            item.classList.add('productive-social-hide-visibility');
+            item.style.visibility = 'hidden';
 
         })
 
-    }, 5)
+    }, 100)
 
 }
 
