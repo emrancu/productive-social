@@ -53,13 +53,13 @@ function MainButton() {
 
     const imageBlur = ()=>{
 
-        // if(document.querySelector('div[id^="screen-root"]')){
-        //     const mObserver =  initImageProcessor('div[id^="mount"] .__fb-light-mode');
-        //
-        //     if(mObserver){
-        //         setObserver(mObserver)
-        //     }
-        // }
+        if(document.querySelector('div[id^="screen-root"]')){
+            const mObserver =  initImageProcessor('div[id^="screen-root"]');
+
+            if(mObserver){
+                setObserver(mObserver)
+            }
+        }
 
         if(document.querySelector("div[id^='mount']")){
 

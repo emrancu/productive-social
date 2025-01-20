@@ -66,6 +66,7 @@ const hideSideMenus = ()=>{
         hideUnwantedMenus()
     }, 4000)
 
+    // jquery("div[id^='mount'] div[role='banner'] ul>li a[aria-label='Home']").remove();
 
     setInterval(()=>{
 
@@ -193,7 +194,6 @@ const hideSideMenusForMobile = ()=> {
             story.classList.add('productive-social-hide-visibility')
             story.innerHTML = ''
         }
-
     }
 
 
@@ -289,10 +289,8 @@ const hideSideMenusForMobile = ()=> {
 
                 if (found) {
 
-                  //  const lastIndex = items.length - 2
-                  //  if (index < lastIndex) {
-                        item.classList.add('productive-social-hide-visibility');
-                  //  }
+                 item.classList.add('productive-social-hide-visibility');
+                  increment()
                 }
 
             })
@@ -378,6 +376,11 @@ const processMessageCallback = (response, imageTag) => {
 
 export const initImageProcessor = (selector) => {
     const processImage = (imageTag) => {
+
+        if(imageTag.closest('div.productive-social-hide-visibility')){
+            return;
+        }
+
         if (imageTag.dataset.processing || imageTag.dataset.processed) return;
 
         imageTag.dataset.processing = 'true';

@@ -14,8 +14,7 @@ function onDeviceReady() {
    }, 3000);
 
 
-    startFacebook()
-
+   startFacebook()
 }
 
 

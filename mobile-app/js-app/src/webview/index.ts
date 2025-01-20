@@ -47,6 +47,19 @@ export const startFacebook = ()=>{
 
                 if(data.type === 'productive_image_process'){
 
+                    // @ts-ignore
+                    window.processImage(data, (response: any) =>{
+
+                        webview.executeScript({
+                            code: `
+                      const callbackData = ${JSON.stringify(response)};
+                      window.PS_MESSAGE_CALLBACK["${data.callback_uid}"](callbackData);
+                      delete window.PS_MESSAGE_CALLBACK["${data.callback_uid}"]
+                       `,
+                        });
+
+                    })
+
                 }
 
                 if(data.type === 'ps_register_account'){
@@ -124,10 +137,10 @@ function injectInlineScript( id) {
 injectInlineScript("34862482712267423632"); 
  
 // check on extension - public/js/content.js
-injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/content.js?v=1.0.0.1', '100012001');
+injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/content.js?v=1.0.0.2', '100012001');
 
 // This is the main app file (after build)- check on extension - public/app/index.js
-injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/index.js?v=1.0.0.2', '100012002');
+injectScript('https://pub-f091aa110d8a404eae2809211dc7f591.r2.dev/productive-social/build/index.js?v=1.0.0.3', '100012002');
 
   `});
 
